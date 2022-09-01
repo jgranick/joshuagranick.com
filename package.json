@@ -1,11 +1,11 @@
 {
-  "name": "www.joshuagranick.com",
+  "name": "joshuagranick.com",
   "private": true,
   "description": "",
   "version": "0.1.0",
   "author": "Joshua Granick",
   "bugs": {
-    "url": "https://github.com/jgranick/www.joshuagranick.com/issues"
+    "url": "https://github.com/jgranick/joshuagranick.com/issues"
   },
   "dependencies": {
     "gatsby": "^4.21.1",
@@ -38,7 +38,7 @@
   "license": "SEE LICENSE IN LICENSE.MD",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jgranick/www.joshuagranick.com.git"
+    "url": "git+https://github.com/jgranick/joshuagranick.com.git"
   },
   "scripts": {
     "build": "gatsby build",
