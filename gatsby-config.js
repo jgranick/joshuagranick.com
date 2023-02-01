@@ -1,60 +1,59 @@
 module.exports = {
-  siteMetadata: {
-    title: `JoshuaGranick.com`,
-    author: {
-      name: `Joshua Granick`,
-      summary: `Lover of all things cute and quirky. Writer, speaker and empathetic problem solver.`,
+    siteMetadata: {
+        title: `Joshua Granick`,
+        author: {
+            name: `Joshua Granick`,
+            summary: `Creator of web, mobile and desktop games and interactive experiences. Lover of cute and quirky things.`,
+        },
+        description: ``,
+        siteUrl: `https://www.joshuagranick.com/`,
+        social: {
+            twitter: `singmajesty`,
+        },
     },
-    description: ``,
-    siteUrl: `https://www.joshuagranick.com/`,
-    social: {
-      twitter: `singmajesty`,
-    },
-  },
-  plugins: [
-    `gatsby-plugin-image`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
-    },
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          {
-            resolve: `gatsby-remark-images`,
+    plugins: [
+        `gatsby-plugin-image`,
+        {
+            resolve: `gatsby-source-filesystem`,
             options: {
-              maxWidth: 630,
+                path: `${__dirname}/content/blog`,
+                name: `blog`,
             },
-          },
-          {
-            resolve: `gatsby-remark-responsive-iframe`,
+        },
+        {
+            resolve: `gatsby-source-filesystem`,
             options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
+                name: `images`,
+                path: `${__dirname}/src/images`,
             },
-          },
-          `gatsby-remark-prismjs`,
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`,
-        ],
-      },
-    },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-feed`,
-      options: {
-        query: `
+        },
+        {
+            resolve: `gatsby-transformer-remark`,
+            options: {
+                plugins: [{
+                        resolve: `gatsby-remark-images`,
+                        options: {
+                            maxWidth: 630,
+                        },
+                    },
+                    {
+                        resolve: `gatsby-remark-responsive-iframe`,
+                        options: {
+                            wrapperStyle: `margin-bottom: 1.0725rem`,
+                        },
+                    },
+                    `gatsby-remark-prismjs`,
+                    `gatsby-remark-copy-linked-files`,
+                    `gatsby-remark-smartypants`,
+                ],
+            },
+        },
+        `gatsby-transformer-sharp`,
+        `gatsby-plugin-sharp`,
+        {
+            resolve: `gatsby-plugin-feed`,
+            options: {
+                query: `
           {
             site {
               siteMetadata {
@@ -66,20 +65,19 @@ module.exports = {
             }
           }
         `,
-        feeds: [
-          {
-            serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.nodes.map(node => {
-                return Object.assign({}, node.frontmatter, {
-                  description: node.excerpt,
-                  date: node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + node.fields.slug,
-                  custom_elements: [{ "content:encoded": node.html }],
-                })
-              })
-            },
-            query: `
+                feeds: [{
+                    serialize: ({ query: { site, allMarkdownRemark } }) => {
+                        return allMarkdownRemark.nodes.map(node => {
+                            return Object.assign({}, node.frontmatter, {
+                                description: node.excerpt,
+                                date: node.frontmatter.date,
+                                url: site.siteMetadata.siteUrl + node.fields.slug,
+                                guid: site.siteMetadata.siteUrl + node.fields.slug,
+                                custom_elements: [{ "content:encoded": node.html }],
+                            })
+                        })
+                    },
+                    query: `
               {
                 allMarkdownRemark(
                   sort: { order: DESC, fields: [frontmatter___date] },
@@ -98,25 +96,24 @@ module.exports = {
                 }
               }
             `,
-            output: "/rss.xml",
-            title: "JoshuaGranick.com RSS Feed",
-          },
-        ],
-      },
-    },
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `JoshuaGranick.com`,
-        short_name: `JoshuaGranick`,
-        start_url: `/`,
-        background_color: `#ffffff`,
-        // This will impact how browsers show your PWA/website
-        // https://css-tricks.com/meta-theme-color-and-trickery/
-        // theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/icon.png`, // This path is relative to the root of the site.
-      },
-    },
-  ],
+                    output: "/rss.xml",
+                    title: "JoshuaGranick.com RSS Feed",
+                }, ],
+            },
+        },
+        {
+            resolve: `gatsby-plugin-manifest`,
+            options: {
+                name: `JoshuaGranick.com`,
+                short_name: `JoshuaGranick`,
+                start_url: `/`,
+                background_color: `#ffffff`,
+                // This will impact how browsers show your PWA/website
+                // https://css-tricks.com/meta-theme-color-and-trickery/
+                // theme_color: `#663399`,
+                display: `minimal-ui`,
+                icon: `src/images/icon.png`, // This path is relative to the root of the site.
+            },
+        },
+    ],
 }
