@@ -3,7 +3,7 @@ module.exports = {
         title: `Joshua Granick`,
         author: {
             name: `Joshua Granick`,
-            summary: `Creator of web, mobile and desktop games. Lover of fun interactive experiences.`,
+            summary: `Developer of web, mobile, console and desktop games. Lover of fun interactive experiences.`,
         },
         description: ``,
         siteUrl: `https://www.joshuagranick.com/`,
